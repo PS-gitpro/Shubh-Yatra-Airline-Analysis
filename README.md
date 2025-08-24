@@ -9,6 +9,12 @@
 
 A comprehensive dashboard for analyzing risk factors and safety performance of Indian domestic airlines. This Streamlit application provides data-driven insights to enhance aviation safety and operational efficiency.
 
+## 🌐 Live Deployment
+
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://sapph-yatra-airline-analysis-2cjkemssdgimwf9bzockxr.streamlit.app/)
+
+**Short URL**: [bit.ly/shubh-yatra](https://bit.ly/shubh-yatra) (redirects to main app)
+
 ## ✨ Features
 
 - **📊 Risk Scoring System**: Color-coded risk assessment for each airline
