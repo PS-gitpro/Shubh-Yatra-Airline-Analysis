@@ -139,14 +139,22 @@ def generate_sample_data():
 
 # Risk calculation functions
 def calculate_risk_score(airline, df):
-    """Calculate risk score for an airline based on incident data"""
+    """Calculate risk score for an airline based on incident data or use existing Risk_Score"""
+    # First check if Risk_Score column exists in the uploaded data
+    if 'Risk_Score' in df.columns:
+        airline_data = df[df['Airline'] == airline]
+        if not airline_data.empty:
+            # Return the risk score from the CSV data (use first value found)
+            return airline_data['Risk_Score'].values[0]
+    
+    # If no Risk_Score column exists, calculate it from incidents
     airline_data = df[df['Airline'] == airline]
     total_flights = len(airline_data)
     
     if total_flights == 0:
         return 0
     
-    # Weighted risk calculation
+    # Weighted risk calculation based on incidents
     high_risk = len(airline_data[airline_data['Severity'] == 'High']) * 3
     medium_risk = len(airline_data[airline_data['Severity'] == 'Medium']) * 2
     low_risk = len(airline_data[airline_data['Severity'] == 'Low']) * 1
@@ -155,7 +163,6 @@ def calculate_risk_score(airline, df):
     risk_score = (total_risk / total_flights) * 100
     
     return min(risk_score, 100)  # Cap at 100
-
 def get_risk_category(score):
     """Categorize risk score"""
     if score < 20:
@@ -214,6 +221,14 @@ if uploaded_csv is not None:
     try:
         df = pd.read_csv(uploaded_csv)
         st.markdown('<div class="success-msg">CSV file uploaded successfully!</div>', unsafe_allow_html=True)
+        
+        # DEBUG: Check if Risk_Score column exists
+        if 'Risk_Score' in df.columns:
+            st.success("✓ Risk_Score column detected in CSV!")
+            st.write("Risk scores found:", df[['Airline', 'Risk_Score']].values)
+        else:
+            st.info("No Risk_Score column - scores will be calculated from incidents")
+            
     except Exception as e:
         st.error(f"Error reading CSV file: {e}")
         st.info("Using sample data for demonstration")
@@ -221,7 +236,6 @@ if uploaded_csv is not None:
 else:
     st.info("Using sample data for demonstration. Upload a CSV file to use your own data.")
     df = generate_sample_data()
-
 # Display data preview
 with st.expander("Preview Data", expanded=True):
     st.dataframe(df.head(10))
