@@ -6,6 +6,9 @@ import plotly.graph_objects as go
 from datetime import datetime
 import io
 
+# Copyright (c) 2025 Prateek Singh. All Rights Reserved.
+# Licensed under the MIT License.
+
 # Page configuration
 st.set_page_config(
     page_title="Shubh Yatra - Airline Risk Analysis",
@@ -410,3 +413,4 @@ with st.expander("How to use this dashboard"):
     6. **Detailed Analysis**: Use the dropdown to select specific risk analysis types
     7. **Export**: Generate and download comprehensive risk reports
     """)
+
