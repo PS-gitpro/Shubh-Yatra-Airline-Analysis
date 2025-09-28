@@ -402,6 +402,10 @@ if st.button("Generate Risk Report"):
 st.markdown("---")
 st.markdown("**🧿Shubh Yatra✈️** • © 2025 Prateek Singh • MIT License • Risk Factor Analysis For Indian Domestic Flights • Powered by Streamlit • DGCA Compliant")
 
+# This allows the app to run both as package and standalone
+if __name__ == "__main__":
+    main()
+
 # Instructions for use
 with st.expander("How to use this dashboard"):
     st.markdown("""
@@ -413,3 +417,4 @@ with st.expander("How to use this dashboard"):
     6. **Detailed Analysis**: Use the dropdown to select specific risk analysis types
     7. **Export**: Generate and download comprehensive risk reports
     """)
+
