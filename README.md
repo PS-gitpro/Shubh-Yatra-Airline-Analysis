@@ -111,3 +111,11 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 For questions or support regarding this project:
 ● 🐛 Create an Issue
 ● 💬 Start a Discussion
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+**Copyright © 2025 Prateek Singh. All Rights Reserved.**
+
+---
